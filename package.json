@@ -1,0 +1,12 @@
+{
+  "name": "language-sqsp",
+  "version": "0.1.0",
+  "description": "Squarespace/JSON-T template language for Atom.",
+  "keywords": [],
+  "repository": "https://github.com/stormwarning/language-sqsp",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {}
+}
