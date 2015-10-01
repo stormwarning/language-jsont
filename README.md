@@ -1,4 +1,4 @@
-# language-sqsp package
+# language-jsont package
 
 A short description of your package.
 
