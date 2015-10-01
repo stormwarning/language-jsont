@@ -1,8 +1,16 @@
 {
   "name": "language-jsont",
-  "version": "0.0.3",
-  "description": "Squarespace/JSON-T template language for Atom.",
-  "keywords": [],
+  "version": "0.0.5",
+  "description": "JSON-T/Squarespace template language support in Atom.",
+  "keywords": [
+    "language",
+    "grammar",
+    "syntax",
+    "jsont",
+    "json template",
+    "squarespace",
+    "atom"
+  ],
   "repository": "https://github.com/stormwarning/language-jsont",
   "license": "MIT",
   "engines": {
