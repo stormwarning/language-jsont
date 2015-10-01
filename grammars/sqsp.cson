@@ -1,4 +1,5 @@
 'name': 'HTML (JSON-T)'
+
 'fileTypes': [
   'block'
   'item'
@@ -6,8 +7,10 @@
   'preset'
   'region'
 ]
-'foldingStartMarker': '(?x){.\\s*(if|section|repeated)[^(})]+}'
-'foldingStopMarker': '(?x){.\\s*(end)[^(})]+}'
+
+'foldingStartMarker': '(?x){\\.(if|section|repeated)[^(})]+}'
+'foldingStopMarker': '(?x){\\.(end)[^(})]+}'
+
 'patterns': [
   {
     'comment': 'Include HTML grammar as a starting point.'
@@ -33,15 +36,15 @@
     'patterns': [
       {
         'name': 'keyword.control.jsont'
-        'match': '\\b.(section|repeated|end)\\b'
+        'match': '\\.(section|repeated|if|end)'
       }
       {
         'name': 'keyword.operator.jsont'
-        'match': '\\b.(or|alternates with)\\b'
+        'match': '\\.(or|alternates with)'
       }
       {
         'name': 'constant.character.jsont'
-        'match': '\\b.(space|tab|newline|meta-left|meta-right)\\b'
+        'match': '\\.(space|tab|newline|meta-left|meta-right)'
       }
       {
         'include': '#formatter'
@@ -49,37 +52,17 @@
     ]
   }
 ]
+
 'repository':
   'formatter':
     'patterns': [
       {
         'name': 'support.function.with-args.jsont'
-        'match': '\\|\\s+(?![\\.0-9])[a-zA-Z0-9_-]+\\:\\s+'
+        'match': '\\|\\s*(?![0-9])[a-zA-Z0-9_-]+\\s[a-zA-Z0-9_-]+'
       }
       {
         'name': 'support.function.without-args.jsont'
-        'match': '\\|\\s+(?![\\.0-9])[a-zA-Z0-9_-]+\\s+'
-      }
-    ]
-  'assign_op':
-    'patterns': [
-      {
-        'match': '/='
-        'name': 'keyword.operator.assignment.augmented.liquid'
-      }
-    ]
-  'logic_expression':
-    'patterns': [
-      {
-        'match': '/='
-        'name': 'keyword.operator.assignment.augmented.liquid'
-      }
-    ]
-  'logic_op':
-    'patterns': [
-      {
-        'match': '\\s+(and|or|not|contains|(\\!\\=|\\=\\=|<\\=|>\\=|<|>)\\s+'
-        'name': 'keyword.operator.logical.liquid'
+        'match': '\\|\\s*(?![0-9])[a-zA-Z0-9_-]+'
       }
     ]
 
