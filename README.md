@@ -1,5 +1,8 @@
-# language-jsont package
+# language-jsont
+[![apm version](https://img.shields.io/apm/v/language-jsont.svg?style=flat-square)](https://atom.io/packages/language-jsont)
+[![apm downloads](https://img.shields.io/apm/dm/language-jsont.svg?style=flat-square)](https://atom.io/packages/language-jsont)
+[![GitHub issues](https://img.shields.io/github/issues/stormwarning/language-jsont.svg?style=flat-square)](https://github.com/stormwarning/language-jsont/issues)
 
-A short description of your package.
+JSON-Template/Squarespace template language support in Atom.
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+Adds JSON grammar for `.conf` files. Custom grammar for `.block`, `.item`, `.list`, `.preset`, and `.region` files extends HTML.
