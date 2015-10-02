@@ -1,0 +1,50 @@
+
+{# Comment}
+
+{##BEGIN}
+  Block comment
+{##END}
+
+
+{.section foo}
+
+  <p>Section here</p>
+
+{.end}
+
+
+{.repeated section bar}
+
+{.alternates with}
+
+{.end}
+
+
+{.if something}
+
+  {.space}
+
+{.or something-else}
+
+  {.newline}
+
+{.end}
+
+
+{variable}
+
+{variable.property}
+
+{variable|formatter}
+
+{squarespace-headers}
+
+{squarespace.page-classes}
+
+{@|item-classes}
+
+{.main-image?}
+  <!-- code here -->
+{.end}
+
+{@|apply some-block.block}
