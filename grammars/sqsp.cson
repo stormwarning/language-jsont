@@ -8,8 +8,8 @@
   'region'
 ]
 
-'foldingStartMarker': '(?x){\\.(if|section|repeated)[^(})]+}'
-'foldingStopMarker': '(?x){\\.(end)[^(})]+}'
+'foldingStartMarker': '{\\.(if|section|repeated)}[^({.end})]+'
+'foldingStopMarker': '(?x){\\.(end)}'
 
 'patterns': [
   {
@@ -17,7 +17,7 @@
     'include': 'text.html.basic'
   }
   {
-    'name': 'comment.line.jsont'
+    'name': 'comment.line.number-sign.jsont'
     'begin': '{#'
     'end': '}'
   }
@@ -47,6 +47,14 @@
         'match': '\\.(space|tab|newline|meta-left|meta-right)'
       }
       {
+        'name': 'support.class.jsont'
+        'match': '(@)'
+      }
+      {
+        'name': 'variable.parameter.jsont'
+        'match': '(?<=\\w\\.)\\w\\b'
+      }
+      {
         'include': '#formatter'
       }
     ]
@@ -57,8 +65,8 @@
   'formatter':
     'patterns': [
       {
-        'name': 'support.function.with-args.jsont'
-        'match': '\\|\\s*(?![0-9])[a-zA-Z0-9_-]+\\s[a-zA-Z0-9_-]+'
+        'name': 'string.unquoted.jsont'
+        'match': '\\s[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+'
       }
       {
         'name': 'support.function.without-args.jsont'
