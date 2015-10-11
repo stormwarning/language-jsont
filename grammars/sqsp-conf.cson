@@ -1,6 +1,7 @@
 'name': 'JSON (Squarespace)'
 'fileTypes': [
-  'conf'
+  'conf',
+  'preset'
 ]
 'patterns': [
   {
