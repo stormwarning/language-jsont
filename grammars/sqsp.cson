@@ -49,6 +49,12 @@
         'include': '#index'
       }
       {
+        'include': '#squarespace'
+      }
+      {
+        'include': '#reserved'
+      }
+      {
         'include': '#formatters'
       }
       {
@@ -73,6 +79,12 @@
       {
         'include': '#index'
       }
+      {
+        'include': '#squarespace'
+      }
+      {
+        'include': '#reserved'
+      }
     ]
 
   'constants':
@@ -83,17 +95,26 @@
     'patterns': [
       {
         'name': 'keyword.control.jsont'
-        'match': '(section|repeated section|if|end)'
+        'match': '(?<=\\{\\.)(section|repeated section|if|end)'
       }
       {
-        'name': 'keyword.operator.jsont'
-        'match': '(or|alternates with)'
+        'name': 'keyword.control.jsont'
+        'match': '(?<=\\{\\.)(or|alternates with)'
       }
     ]
 
   'index':
     'name': 'support.class.jsont'
-    'match': '(@)'
+    'match': '(@|@index)'
+
+  'squarespace':
+    'name': 'support.class.jsont.sqsp'
+    'match': '(squarespace(?!-)|squarespace-headers|squarespace-post-entry)'
+
+  'reserved':
+    'comment': 'Default Squarespace variable names.'
+    'name': 'variable.language.jsont.sqsp'
+    'match': '\\b(?<!\\|)(addedOn|assetUrl|collection|externalLink|fullUrl|id|item|main-content|navigationTitle|newWindow|originalSize|page-classes|page-id|section|siteTitle|title|url|website)'
 
   'formatters':
     'patterns': [
@@ -107,11 +128,11 @@
       }
       {
         'name': 'support.function.without-args.jsont'
-        'match': '(template-file|html|html-attr-value|str|raw|json|js-string|url-param-value)'
+        'match': '(html|html-attr-value|json|js-string|raw|str|template-file|url-param-value)'
       }
       {
-        'name': 'support.function.without-args.jsont'
-        'match': '(pluralize|timesince|date|htmltag|slugify|smartypants|item-classes|social-button|comments|comment-link|comment-count|like-button|image-meta|product-price|product-status|json-pretty|url-encode|htmlattr|activate-twitter-links|safe|count|width|height|apply)'
+        'name': 'support.function.without-args.jsont.sqsp'
+        'match': '(activate-twitter-links|apply|comment-link|comment-count|comments|count|date|height|htmlattr|htmltag|image-meta|item-classes|json-pretty|like-button|pluralize|product-price|product-status|safe|slugify|smartypants|social-button|timesince|url-encode|width)'
       }
     ]
 
