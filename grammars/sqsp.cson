@@ -17,10 +17,10 @@
     'include': 'text.html.basic'
   }
   {
-    'include': '#line-comments'
+    'include': '#block-comments'
   }
   {
-    'include': '#block-comments'
+    'include': '#line-comments'
   }
   {
     'include': '#constructs'
