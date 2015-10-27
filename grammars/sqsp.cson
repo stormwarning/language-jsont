@@ -42,24 +42,21 @@
     'end': '{##END}'
 
   'variables':
+    'name': 'meta.substitution.jsont'
     'begin': '\\{(?!\\.)'
     'end': '\\}'
     'patterns': [
       {
-        'include': '#index'
+        'include': '#cursor'
+      }
+      {
+        'include': '#definitions'
       }
       {
         'include': '#squarespace'
       }
       {
-        'include': '#reserved'
-      }
-      {
         'include': '#formatters'
-      }
-      {
-        'name': 'variable.language.default.jsont'
-        'match': '[a-zA-Z0-9_-]+'
       }
     ]
 
@@ -77,13 +74,13 @@
         'include': '#directives'
       }
       {
-        'include': '#index'
+        'include': '#cursor'
+      }
+      {
+        'include': '#definitions'
       }
       {
         'include': '#squarespace'
-      }
-      {
-        'include': '#reserved'
       }
     ]
 
@@ -101,20 +98,49 @@
         'name': 'keyword.control.jsont'
         'match': '(?<=\\{\\.)(or|alternates with)'
       }
+      {
+        'name': 'storage.type.jsont'
+        'match': '(?<=\\{\\.)var'
+      }
     ]
 
-  'index':
+  'definitions':
+    'patterns': [
+      {
+        'name': 'punctuation.definition.variable.jsont'
+        'match': '@(?=[a-zA-Z0-9_-]+)'
+      }
+      {
+        'name': 'variable.other.jsont'
+        'match': '(?<=@)[a-zA-Z0-9_-]+(?=(\\s|\\||\\.|\\}))'
+      }
+      {
+        'name': 'string.quoted.jsont'
+        'match': '(?<=\\s)\\"[a-zA-Z0-9_-]+\\"(?=\\})'
+      }
+    ]
+
+  'cursor':
     'name': 'support.class.jsont'
-    'match': '(@|@index)'
+    'match': '(@((?=\\B)|index))'
 
   'squarespace':
-    'name': 'support.class.jsont.sqsp'
-    'match': '(squarespace(?!-)|squarespace-headers|squarespace-post-entry)'
-
-  'reserved':
-    'comment': 'Default Squarespace variable names.'
-    'name': 'variable.language.jsont.sqsp'
-    'match': '\\b(?<!\\|)(addedOn|assetUrl|collection|externalLink|fullUrl|id|item|main-content|navigationTitle|newWindow|originalSize|page-classes|page-id|section|siteTitle|title|url|website)'
+    'patterns': [
+      {
+        'name': 'support.class.jsont.sqsp'
+        'match': '(postItemInjectCode|squarespace((?!\\-)|-headers|-post-entry))'
+      }
+      {
+        'comment': 'Squarespace object properties'
+        'name': 'support.constant.jsont.sqsp'
+        'match': '\\b(main-content|page\\-(classes|id))\\b'
+      }
+      {
+        'comment': 'Top-level Squarespace page objects'
+        'name': 'entity.name.function.jsont.sqsp'
+        'match': '\\b(authenticatedAccount|calendarView|collection|empty(\\b|Folder)|items|shareButtons|shoppingCart|showCart|template|website(\\b|Settings))\\b'
+      }
+    ]
 
   'formatters':
     'patterns': [
@@ -128,11 +154,11 @@
       }
       {
         'name': 'support.function.without-args.jsont'
-        'match': '(html|html-attr-value|json|js-string|raw|str|template-file|url-param-value)'
+        'match': '(html((?![a-z\\-])|-attr-value)|json|js-string|raw|str|template-file|url-param-value)'
       }
       {
         'name': 'support.function.without-args.jsont.sqsp'
-        'match': '(activate-twitter-links|apply|comment-link|comment-count|comments|count|date|height|htmlattr|htmltag|image-meta|item-classes|json-pretty|like-button|pluralize|product-price|product-status|safe|slugify|smartypants|social-button|timesince|url-encode|width)'
+        'match': '(activate-twitter-links|apply|comment(-link|-count|s)|count|date|height|html(attr|tag)|image-meta|item-classes|json-pretty|like-button|pluralize|product-(price|status)|safe|slugify|smartypants|social-button|timesince|url-encode|width)'
       }
     ]
 
