@@ -5,6 +5,27 @@
   Block comment
 {##END}
 
+{.if options}
+  {.var @content item.structuredContent}
+  {.var @variants @content.variants}
+  <div class="product-variants" data-item-id="{item.id}" data-variants="{@variants|json|htmltag}">{.repeated section options}
+    <div class="variant-option">
+    <div class="variant-option-title">{name}: </div>
+    <div class="variant-select-wrapper">
+      <select data-variant-option-name="{name|htmltag}">
+        <option value="">Select {name}</option>
+        {.repeated section values}<option value="{@|htmltag}">{@}</option>{.end}
+      </select>
+    </div>
+    </div>{.end}
+  </div>
+{.end}
+
+{.var @variable "value"}
+{@variants|json|htmltag}
+{name|htmltag}
+{@|htmltag}
+{@|html-attr-value}
 
 {.section foo}
 
@@ -20,11 +41,11 @@
 {.end}
 
 
-{.if something}
+{.if template.mobileStylesEnabled}
 
   {.space}
 
-{.or something-else}
+{.or}
 
   {.newline}
 
