@@ -128,7 +128,7 @@
     'patterns': [
       {
         'name': 'support.class.jsont.sqsp'
-        'match': '(postItemInjectCode|squarespace((?!\\-)|-headers|-post-entry))'
+        'match': '(postItemInjectCode|squarespace((?!\\-)|-headers|-post-entry|-footers))'
       }
       {
         'comment': 'Squarespace object properties'
