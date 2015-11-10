@@ -1,6 +1,6 @@
 {
   "name": "language-jsont",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "JSON-T/Squarespace template language support in Atom.",
   "keywords": [
     "syntax",
