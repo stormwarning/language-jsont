@@ -150,7 +150,7 @@
       }
       {
         'name': 'string.unquoted.jsont'
-        'match': '\\s[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+'
+        'match': '\\s[a-zA-Z0-9_-]+\\.?[a-zA-Z0-9_-]+'
       }
       {
         'name': 'support.function.without-args.jsont'
@@ -159,6 +159,10 @@
       {
         'name': 'support.function.without-args.jsont.sqsp'
         'match': '(activate-twitter-links|apply|comment(-link|-count|s)|count|date|height|html(attr|tag)|image-meta|item-classes|json-pretty|like-button|pluralize|product-(price|status)|safe|slugify|smartypants|social-button(\\b|-inline)|timesince|url-encode|width)'
+      }
+      {
+        'name': 'support.function.with-args.jsont.sqsp'
+        'match': '(video)'
       }
     ]
 

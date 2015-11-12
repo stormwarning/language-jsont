@@ -26,6 +26,7 @@
 {name|htmltag}
 {@|htmltag}
 {@|html-attr-value}
+{@|video load-false color-data}
 
 {.section foo}
 
