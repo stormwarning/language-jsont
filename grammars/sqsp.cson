@@ -74,6 +74,9 @@
         'include': '#directives'
       }
       {
+        'include': '#predicates'
+      }
+      {
         'include': '#cursor'
       }
       {
@@ -101,6 +104,22 @@
       {
         'name': 'storage.type.jsont'
         'match': '(?<=\\{\\.)var'
+      }
+    ]
+
+  'predicates':
+    'patterns': [
+      {
+        'name': 'entity.name.function.jsont'
+        'match': '(?<=\\{\\.)Debug(?=\\?)'
+      }
+      {
+        'name': 'entity.name.function.jsont.sqsp'
+        'match': '(?<=\\{\\.)(collection((?![a-z\\-])|TypeNameEquals)|comments|disqus|equal|even((?![a-z\\-])|t)|excerpt|external-link|folder|location|main-image|odd|plural|promote(map|embed|image|code|quote|twitter|link|video|foursquare|instagram|form)|singular|video)(?=\\?)'
+      }
+      {
+        'name': 'keyword.control.jsont'
+        'match': '(?<=[a-zA-Z0-9_-])\\?'
       }
     ]
 
