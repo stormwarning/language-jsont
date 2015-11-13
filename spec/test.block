@@ -1,72 +1,42 @@
 
-{# Comment}
+{# Comments}
 
+{# Line Comment}
 {##BEGIN}
   Block comment
 {##END}
 
-{.if options}
-  {.var @content item.structuredContent}
-  {.var @variants @content.variants}
-  <div class="product-variants" data-item-id="{item.id}" data-variants="{@variants|json|htmltag}">{.repeated section options}
-    <div class="variant-option">
-    <div class="variant-option-title">{name}: </div>
-    <div class="variant-select-wrapper">
-      <select data-variant-option-name="{name|htmltag}">
-        <option value="">Select {name}</option>
-        {.repeated section values}<option value="{@|htmltag}">{@}</option>{.end}
-      </select>
-    </div>
-    </div>{.end}
-  </div>
-{.end}
 
-{.var @variable "value"}
-{@variants|json|htmltag}
-{name|htmltag}
-{@|htmltag}
-{@|html-attr-value}
-{@|video load-false color-data}
+{# Variables}
 
-{.section foo}
-
-  <p>Section here</p>
-
-{.end}
-
-
-{.repeated section bar}
-
-{.alternates with}
-
-{.end}
-
-
-{.if template.mobileStylesEnabled}
-
-  {.space}
-
-{.or}
-
-  {.newline}
-
-{.end}
-
-
-{variable}
-
-{variable.property}
-
-{variable|formatter}
-
-{squarespace-headers}
+{@}
+{@index}
+{@|social-button-inline}
 
 {squarespace.page-classes}
+{collection.id}
 
-{@|item-classes}
-
-{.main-image?}
-  <!-- code here -->
-{.end}
+{@variants|json|htmltag}
 
 {@|apply some-block.block}
+{@|video load-false color-data}
+{sourceUrl|truncate 42}
+{addedOn|date %B %e, %Y}
+{num|pluralize is are}
+{num-people|pluralize/It depends/They depend}
+
+
+{# Directives}
+
+{.space}
+{.meta-left}
+
+{.section}{.alternates with}{.end}
+{.repeated section items}{.end}
+{.if collection.description}{.or}{.end}
+{.if title || body}{.end}
+
+{.var @content item.structuredContent}
+
+{.index?}{.or folder?}{.end}
+{.equal? typeName "in dex"}
