@@ -115,7 +115,7 @@
       }
       {
         'name': 'entity.name.function.jsont.sqsp'
-        'match': '(?<=\\{\\.)(collection((?![a-z\\-])|TypeNameEquals)|comments|disqus|equal|even((?![a-z\\-])|t)|excerpt|external-link|folder|location|main-image|odd|plural|promote(map|embed|image|code|quote|twitter|link|video|foursquare|instagram|form)|singular|video)(?=\\?)'
+        'match': '(?<=\\{\\.)(collection((?![a-z\\-])|TypeNameEquals)|comments|disqus|equal|even((?![a-z\\-])|t)|excerpt|external-link|folder|index|location|main-image|odd|plural|promote(map|embed|image|code|quote|twitter|link|video|foursquare|instagram|form)|singular|video)(?=\\?)'
       }
       {
         'name': 'keyword.control.jsont'
@@ -168,6 +168,10 @@
         'match': '\\|(?=\\w)'
       }
       {
+        'name': 'constant.numeric.jsont'
+        'match': '\\s[0-9]+'
+      }
+      {
         'name': 'string.unquoted.jsont'
         'match': '\\s[a-zA-Z0-9_-]+\\.?[a-zA-Z0-9_-]+'
       }
@@ -177,11 +181,11 @@
       }
       {
         'name': 'support.function.without-args.jsont.sqsp'
-        'match': '(activate-twitter-links|apply|comment(-link|-count|s)|count|date|height|html(attr|tag)|image-meta|item-classes|json-pretty|like-button|pluralize|product-(price|status)|safe|slugify|smartypants|social-button(\\b|-inline)|timesince|url-encode|width)'
+        'match': '(activate-twitter-links|apply|comment(-link|-count|s)|count|height|html(attr|tag)|image-meta|item-classes|json-pretty|like-button|product-(price|status)|safe|slugify|smartypants|social-button((?!\\-)|-inline)|timesince|url-encode|width)'
       }
       {
         'name': 'support.function.with-args.jsont.sqsp'
-        'match': '(video)'
+        'match': '(date|pluralize|truncate|video)'
       }
     ]
 
