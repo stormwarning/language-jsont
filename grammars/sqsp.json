@@ -1,0 +1,348 @@
+{
+  "name": "HTML (JSON-T)",
+  "scopeName": "text.html.jsont",
+
+  "fileTypes": [
+    "block",
+    "item",
+    "list",
+    "page",
+    "region"
+  ],
+
+  "patterns": [
+    {
+      "comment": "Include HTML grammar as a starting point.",
+      "scopeName": "text.html",
+      "include": "text.html.basic"
+    }
+  ],
+
+  "injections": {
+    "L: text.html.jsont": {
+      "patterns": [
+        { "include": "#line-comments" },
+        { "include": "#directives" }
+      ]
+    }
+  },
+
+  "repository": {
+    "arguments": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "string.unquoted.jsont"
+            }
+          },
+          "match": "(?<=\\s)([a-zA-Z0-9_\\x{7f}-\\x{ff}\\.-]*)"
+        }
+      ]
+    },
+
+    "directives": {
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.tag.jsont"
+        }
+      },
+      "end": "\\}",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.tag.jsont"
+        }
+      },
+      "begin": "\\{(?!#)",
+      "patterns": [
+        { "include": "#expressions" },
+        { "include": "#predicates" },
+        { "include": "#constants" },
+        { "include": "#objects" },
+        { "include": "#properties" },
+        { "include": "#definitions" },
+        { "include": "#formatters" },
+        { "include": "#formatters-wargs" },
+        { "include": "#operators" },
+        { "include": "#strings" }
+      ]
+    },
+
+    "formatters": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "support.function.without-args.jsont"
+            }
+          },
+          "match": "(?<=[a-zA-Z0-9_\\x{7f}-\\x{ff}\\]\\)\\\\'\\\"@])(\\|(?:html((?![a-z\\-])|-attr-value)|json|js-string|raw|str|template-file|url-param-value))(?=[\\s\\|\\]\\}\\):,]|\\.\\.|\\*\\*)"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "support.function.without-args.jsont.sqsp"
+            }
+          },
+          "match": "(?<=[a-zA-Z0-9_\\x{7f}-\\x{ff}\\]\\)\\\\'\\\"@])(\\|(?:activate-twitter-links|comment(?:-link|-count|s)|count|height|html(?:attr|tag)|image-meta|item-classes|json-pretty|like-button|product-(?:price|status)|safe|slugify|smartypants|social-button(?:(?!\\-)|-inline)|timesince|url-encode|width))(?=[\\s\\|\\]\\}\\):,]|\\.\\.|\\*\\*)"
+        }
+      ]
+    },
+
+    "line-comments": {
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.end.jsont"
+        }
+      },
+      "end": "\\}",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.begin.jsont"
+        }
+      },
+      "begin": "\\{#(?!(?:#BEGIN|#END))",
+      "name": "comment.line.number-sign.jsont"
+    },
+
+    "expressions": {
+      "patterns": [
+        {
+          "match": "\\.(section|repeated section|if|end)",
+          "name": "keyword.control.jsont"
+        },
+        {
+          "match": "\\.(or|alternates with)",
+          "name": "keyword.control.jsont"
+        },
+        {
+          "match": "\\.var",
+          "name": "storage.type.jsont"
+        },
+        { "include": "#constants" },
+        { "include": "#objects" },
+        { "include": "#properties" },
+        { "include": "#definitions" },
+        { "include": "#formatters-wargs" },
+        { "include": "#formatters" },
+        { "include": "#operators" },
+        { "include": "#strings" }
+      ]
+    },
+
+    "operators": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.operator.bitwise.jsont"
+            }
+          },
+          "match": "(?<=\\s)(&|\\||\\^)(?=\\s)"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.operator.comparison.jsont"
+            }
+          },
+          "match": "(?<=\\s)((?:!|=)=|<=?|>=?|i(?:s|n))(?=\\s)"
+        }
+      ]
+    },
+
+    "properties": {
+      "patterns": [
+        {
+          "comment": "Squarespace object properties",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.property.jsont"
+            },
+            "2": {
+              "name": "support.constant.jsont.sqsp"
+            }
+          },
+          "match": "(?<=[a-zA-Z0-9_\\x{7f}-\\x{ff}])(\\.)(main-content|page-(?:classes|id))(?=[\\.\\s\\|\\[\\)\\]\\}:,])"
+        },
+        {
+          "comment": "Top-level Squarespace page objects",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.property.jsont"
+            },
+            "2": {
+              "name": "entity.name.function.jsont.sqsp"
+            }
+          },
+          "match": "(?<=[a-zA-Z0-9_\\x{7f}-\\x{ff}])(\\.)(authenticatedAccount|calendarView|collection|empty(\\b|Folder)|items|shareButtons|shoppingCart|showCart|template|website(\\b|Settings))(?=[\\.\\s\\|\\[\\)\\]\\}:,])"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.separator.property.jsont"
+            },
+            "2": {
+              "name": "variable.other.property.jsont"
+            }
+          },
+          "match": "(?<=[a-zA-Z0-9_\\x{7f}-\\x{ff}])(\\.)([a-zA-Z_\\x{7f}-\\x{ff}][a-zA-Z0-9_\\x{7f}-\\x{ff}]*)(?=[\\.\\s\\|\\[\\)\\]\\}:,])"
+        }
+      ]
+    },
+
+      "constants": {
+        "patterns": [
+          {
+            "match": "\\.(space|tab|newline|meta-left|meta-right)",
+            "name": "constant.character.jsont"
+          },
+          {
+            "match": "(?i)(?<=[\\s\\[\\(\\{:,])(?:true|false|null|none)(?=[\\s\\)\\]\\}\\,])",
+            "name": "constant.language.jsont"
+          },
+          {
+            "match": "(?<=[\\s\\[\\(\\{:,]|\\.\\.|\\*\\*)[0-9]+(?:\\.[0-9]+)?(?=[\\s\\)\\]\\}\\,]|\\.\\.|\\*\\*)",
+            "name": "constant.numeric.jsont"
+          },
+          {
+            "match": "\\%[a-zA-Z\\%]",
+            "name": "constant.other.jsont"
+          }
+        ]
+      },
+
+    "strings": {
+      "patterns": [
+        {
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.jsont"
+            }
+          },
+          "end": "(?:(?<!\\\\)|(?<=\\\\\\\\))\\'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.jsont"
+            }
+          },
+          "begin": "(?:(?<!\\\\)|(?<=\\\\\\\\))\\'",
+          "name": "string.quoted.single.jsont"
+        },
+        {
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.jsont"
+            }
+          },
+          "end": "(?:(?<!\\\\)|(?<=\\\\\\\\))\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.jsont"
+            }
+          },
+          "begin": "(?:(?<!\\\\)|(?<=\\\\\\\\))\"",
+          "name": "string.quoted.double.jsont"
+        }
+      ]
+    },
+
+    "formatters-wargs": {
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.end.jsont.sqsp"
+        }
+      },
+      "end": "(?:\\||(?!\\}))",
+      "patterns": [
+        { "include": "#arguments" }
+      ],
+      "begin": "(\\|(?:apply|date|pluralize|truncate|video))((?:\\s|\\/))",
+      "contentName": "meta.function.arguments.jsont.sqsp",
+      "beginCaptures": {
+        "1": {
+          "name": "support.function.with-args.jsont.sqsp"
+        },
+        "2": {
+          "name": "punctuation.definition.parameters.begin.jsont.sqsp"
+        }
+      }
+    },
+
+    "predicates": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "entity.name.function.jsont"
+            },
+            "2": {
+              "name": "keyword.control.jsont"
+            }
+          },
+          "match": "((?:\\.|\\.or\\s)Debug)(\\?)"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "entity.name.function.jsont.sqsp"
+            },
+            "2": {
+              "name": "keyword.control.jsont.sqsp"
+            }
+          },
+          "match": "((?:\\.|(?<=\\.or\\s))(?:collection(?:(?![a-z\\-])|TypeNameEquals)|comments|disqus|equal|even(?:(?![a-z\\-])|t)|excerpt|external-link|folder|index|location|main-image|odd|plural|promote(?:map|embed|image|code|quote|twitter|link|video|foursquare|instagram|form)|singular|video))(\\?)"
+        },
+        { "include": "#constants" },
+        { "include": "#objects" },
+        { "include": "#properties" },
+        { "include": "#definitions" },
+        { "include": "#formatters-wargs" },
+        { "include": "#formatters" },
+        { "include": "#operators" },
+        { "include": "#strings" }
+      ]
+    },
+
+    "definitions": {
+      "patterns": [
+        {
+          "comment": "Cursor",
+          "match": "(@((?=\\B)|index))",
+          "name": "support.class.jsont"
+        },
+        {
+          "match": "\\@(?=[a-zA-Z0-9_-]+)",
+          "name": "punctuation.definition.variable.jsont"
+        },
+        {
+          "match": "(?<=@)[a-zA-Z0-9_-]+(?=(\\s|\\||\\.|\\}))",
+          "name": "variable.other.jsont"
+        }
+      ]
+    },
+
+    "objects": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "support.class.jsont.sqsp"
+            }
+          },
+          "match": "(?<=[\\s\\{\\[\\(:,])(postItemInjectCode|squarespace((?!\\-)|-headers|-post-entry|-footers))(?=[\\s\\}\\[\\]\\(\\)\\.\\|,:])"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "variable.other.jsont"
+            }
+          },
+          "match": "(?<=[\\s\\{\\[\\(:,])([a-zA-Z_\\x{7f}-\\x{ff}][a-zA-Z0-9_\\x{7f}-\\x{ff}]*)(?=[\\s\\}\\[\\]\\(\\)\\.\\|,:])"
+        }
+      ]
+    }
+  },
+
+  "uuid": "51987eb6-dcfd-4c22-bcee-373bf7aad1be"
+}
