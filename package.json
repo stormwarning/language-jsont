@@ -9,8 +9,8 @@
     "sqsp",
     "squarespace"
   ],
-  "repository": "https://github.com/stormwarning/language-jsont",
-  "license": "MIT",
+  "repository": "stormwarning/language-jsont",
+  "license": "ISC",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
