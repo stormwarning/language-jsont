@@ -1,18 +1,67 @@
 {
-  "name": "language-jsont",
-  "version": "0.3.0",
-  "description": "JSON-T/Squarespace template language support in Atom.",
-  "keywords": [
-    "syntax",
-    "jsont",
-    "json template",
-    "sqsp",
-    "squarespace"
-  ],
-  "repository": "stormwarning/language-jsont",
-  "license": "ISC",
-  "engines": {
-    "atom": ">=1.0.0 <2.0.0"
-  },
-  "dependencies": {}
+    "name": "language-jsont",
+    "description": "JSON-Template / Squarespace language support.",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stormwarning/language-jsont.git"
+    },
+    "version": "0.3.0",
+    "dependencies": {},
+    "keywords": [
+        "json template",
+        "jsont",
+        "sqsp",
+        "squarespace",
+        "syntax"
+    ],
+    "engines": {
+        "atom": ">=1.0.0 <2.0.0",
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "jsont",
+                "aliases": [
+                    "json template",
+                    "jsont",
+                    "squarespace",
+                    "sqsp"
+                ],
+                "extensions": [
+                    ".block",
+                    ".item",
+                    ".list",
+                    ".page",
+                    ".region"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "json",
+                "extensions": [
+                    ".conf",
+                    ".preset"
+                ]
+            }
+        ],
+        "grammars": [
+            {
+                "language": "jsont",
+                "scopeName": "text.html.jsont",
+                "path": "./syntaxes/jsont.tmLanguage"
+            }
+        ]
+    },
+    "displayName": "JSON-Template",
+    "galleryBanner": {
+        "color": "#222",
+        "theme": "dark"
+    },
+    "icon": "images/squarespace-white.png",
+    "publisher": "stormwarning"
 }
