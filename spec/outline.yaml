@@ -1,0 +1,35 @@
+injections:
+    'L: text.html.jsont':
+        patterns:
+            - include: '#jsontemplate'
+
+patterns:
+    # Include HTML grammar as a starting point.
+    - include: text.html.basic
+
+repository:
+    jsontemplate:
+        patterns:
+            - include: '#block-comments'
+            - include: '#line-comments'
+            - include: '#literals'
+            - include: '#directives'
+            - include: '#predicates'
+            - include: '#variables'
+            - include: '#formatters'
+
+    block-comments:
+
+    line-comments:
+
+    literals:
+
+    directives:
+
+    predicates:
+
+    variables:
+
+    formatters:
+
+
