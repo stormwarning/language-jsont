@@ -21,6 +21,7 @@
 {.if @var|image-meta == "my string"}
 {.if collection.description}{.or}{.end}
 {.if title || body}{.end}
+{.if title.if.or.end.section.var}{.end}
 
 {.section website}
   {siteTitle}
